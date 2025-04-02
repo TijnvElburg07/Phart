@@ -18,9 +18,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Advanced Search</a></li>
-                <li><a href="#" class="active">Prescriptions</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="search.php">Advanced Search</a></li>
+                <li><a href="prescription.php" class="active">Prescriptions</a></li>
             </ul>
         </nav>
         <div class="user-controls">
