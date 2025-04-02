@@ -1,13 +1,13 @@
 <?php
 include 'config.php';
 
-if (isset($_POST)){
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $fullname = $_POST['fullname'];
     $address = $_POST['address'];
     $zipcode = $_POST['zipcode'];
     $city = $_POST['city'];
     $country = $_POST['country'];
-    $birthdate = $_POST['birthdate'];
+    $birthdate = $_POST['dob'];
     $password = $_POST['password'];
     
     $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
@@ -52,13 +52,13 @@ if (isset($_POST)){
         <div class="form-container">
             <h2>CREATE ACCOUNT</h2>
 
-            <form action="login.php" method="post">
+            <form action="register.php" method="post">
                 <div class="form-group">
                     <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" id="address" name="address" placeholder="Straat + huisnummer" required>
+                    <input type="text" id="address" name="address" placeholder="Straatnaam + huisnummer" required>
                 </div>
 
                 <div class="form-group">
