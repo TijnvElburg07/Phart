@@ -54,9 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Advanced Search</a></li>
-                <li><a href="#">Prescriptions</a></li>
+                <li class="active"><a href="index.php">Home</a></li>
+                <li><a href="search.php">Advanced Search</a></li>
+                <li><a href="prescription.php">Prescriptions</a></li>
             </ul>
         </nav>
         <div class="login-button">
