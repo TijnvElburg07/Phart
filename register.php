@@ -12,6 +12,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     
     $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
     
+    try {
+        $stmt = $pdo->prepare("INSERT INTO shipping_address (Address, Zipcode, City, Country) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$address, $zipcode, $city, $country]);
+        $addressId = $pdo->lastInsertId();
+        
+        try {
+            $stmt = $pdo->prepare("INSERT INTO users (name, password, dateOfBirth, addressId, paymentInfoId, role, archived, ownedItems) 
+                       VALUES (?, ?, ?, ?, NULL, 'user', 0, NULL)");
+            $stmt->execute([$fullname, $encrypted_password, $birthdate, $addressId]);
+        } catch (PDOException $e) {
+            echo "Fout bij registratie: " . $e->getMessage();
+        }
+
+
+    } catch (PDOException $e) {
+        echo "Fout bij registratie: " . $e->getMessage();
+    }
 
 }
 ?>
@@ -25,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Apothecare - Create Account</title>
     <link rel="stylesheet" href="CSS/login.css">
 </head>
-
 <body>
     <header>
         <div class="logo-container">
@@ -100,5 +116,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
     </main>
 </body>
-
 </html>
