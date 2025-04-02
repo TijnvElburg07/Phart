@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apothecare - Your Digital Health Companion</title>
+  <title>Phart - Your Digital Health Companion</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,7 +21,7 @@
             <path d="M9 22V12H15V22" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <span class="logo-text">Apothecare</span>
+        <span class="logo-text">Phart</span>
       </div>
       
       <nav>
@@ -44,7 +44,8 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <h1>Apothecare</h1>
+        <h1>Phart
+</h1>
         <p>Your trusted digital companion for managing prescriptions, health, and wellness.</p>
       </div>
     </section>
@@ -98,7 +99,7 @@
             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </div>
           <p class="testimonial-text">
-            Apothecare has made my life so much easier! Their fast delivery and excellent customer service are unmatched.
+            Phart has made my life so much easier! Their fast delivery and excellent customer service are unmatched.
           </p>
           <div class="testimonial-author">
             <h4>Emily Johnson</h4>
@@ -132,7 +133,7 @@
     <!-- CTA Section -->
     <section class="cta">
       <div class="container">
-        <h2>Join Apothecare Today!</h2>
+        <h2>Join Phart Today!</h2>
         <p>Sign up now to manage prescriptions, track medications, and enjoy exclusive benefits!</p>
         <button class="btn-cta">Get started</button>
       </div>
