@@ -56,7 +56,6 @@
     .logo-icon {
       width: 2rem;
       height: 2rem;
-      background-color: #00d4ff;
       border-radius: 0.375rem;
       display: flex;
       align-items: center;
@@ -503,5 +502,5 @@
       color: #00d4ff;
     }
     #icon{
-      color:#000000;
+      color:#00d4ff;
     }

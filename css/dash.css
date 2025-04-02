@@ -325,7 +325,9 @@
   }
   
   .reorder-button:hover {
-    background-color: #00b8dd;
+    border: 1px solid #00d4ff;
+    color:#00d4ff;
+    background-color: #000000;
   }
   
   /* Responsive styles */
