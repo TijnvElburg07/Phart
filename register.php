@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+// include 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $fullname = $_POST['fullname'];
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "Fout bij registratie: " . $e->getMessage();
     }
 
-}
+} 
 ?>
 
 <!DOCTYPE html>
@@ -40,15 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apothecare - Create Account</title>
-    <link rel="stylesheet" href="CSS/login.css">
+    <link rel="stylesheet" href="CSS/register.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
             <div class="logo">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 25L15 5L20 15L25 5L15 25H5Z" fill="#00D1FF" stroke="#00D1FF" stroke-width="2" />
-                </svg>
             </div>
             <h1>Apothecare</h1>
         </div>
