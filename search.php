@@ -14,9 +14,9 @@
                 <span>Apothecare</span>
             </div>
             <nav class="nav">
-                <a href="#" class="nav-item">Home</a>
-                <a href="#" class="nav-item active">Advanced Search</a>
-                <a href="#" class="nav-item">Prescriptions</a>
+                <a href="index.php" class="nav-item">Home</a>
+                <a href="search.php" class="nav-item active">Advanced Search</a>
+                <a href="prescription.php" class="nav-item">Prescriptions</a>
             </nav>
         </div>
         <div class="header-right">

@@ -1,0 +1,253 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    color: #00e1ff;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.logo-container h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #999;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: white;
+}
+
+nav ul li a.active {
+    color: white;
+    border-bottom: 2px solid #00e1ff;
+    padding-bottom: 1.5rem;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.icon-button {
+    color: white;
+    font-size: 1.2rem;
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 1.5rem;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Main Content Styles */
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+}
+
+.reminder-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.reminder-container h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+/* Checkbox Styles */
+.frequency-options {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    max-width: 200px;
+}
+
+.checkbox-container {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    color: #999;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #333;
+    border-radius: 4px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #444;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #00e1ff;
+}
+
+.checkbox-container input:checked ~ .label {
+    color: white;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Time Selector Styles */
+.time-selector {
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.time-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.time-input {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+    font-size: 2rem;
+    padding: 0.5rem;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.am-pm-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.am-pm-toggle button {
+    background-color: #333;
+    border: none;
+    color: #999;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    width: 50px;
+    border-radius: 4px;
+}
+
+.am-pm-toggle button.active {
+    background-color: #00e1ff;
+    color: black;
+}
+
+/* Save Button Styles */
+.save-button {
+    background-color: #00e1ff;
+    color: black;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #00c4dd;
+}
