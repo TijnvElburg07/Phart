@@ -8,7 +8,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phart - Your Digital Health Companion</title>
-  <link rel="stylesheet" href="css/style.css" >
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>  
@@ -39,8 +40,7 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <h1>Phart
-</h1>
+        <h1>Phart</h1>
         <p>Your trusted digital companion for managing prescriptions, health, and wellness.</p>
       </div>
     </section>
@@ -86,6 +86,13 @@
           <img src="https://via.placeholder.com/300x300" alt="Customer testimonial">
         </div>
         <div class="testimonial-content">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
           <p class="testimonial-text">
             Phart has made my life so much easier! Their fast delivery and excellent customer service are unmatched.
           </p>
@@ -93,13 +100,18 @@
             <h4>Emily Johnson</h4>
             <p>Health Blogger</p>
           </div>
-          <div class="testimonial-nav">         
+          <div class="testimonial-nav">
+            <div class="dots">
+              <div class="dot active"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
             <div class="nav-buttons">
               <button class="nav-btn">
-              <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
               </button>
               <button class="nav-btn">
-              <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right"></i>
               </button>
             </div>
           </div>
@@ -112,7 +124,7 @@
       <div class="container">
         <h2>Join Phart Today!</h2>
         <p>Sign up now to manage prescriptions, track medications, and enjoy exclusive benefits!</p>
-        <button class="btn btn-cta" >Get started</button>
+        <a href="#" class="btn-cta">Get started</a>
       </div>
     </section>
   </main>
@@ -123,7 +135,7 @@
       <div class="footer-top">
         <div class="footer-logo">
           <div class="logo-icon">
-          <i class='fab fa-medrt' id="icon"></i>
+            <i class='fab fa-medrt' id="icon"></i>
           </div>
           <span class="logo-text">Smart Pharmacy</span>
         </div>
@@ -185,18 +197,18 @@
           <a href="#">Sitemap</a>
         </div>
         <div class="social-links">
-    <a href="#" class="social-link">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="#" class="social-link">
-        <i class="fab fa-facebook-f"></i>          
-    </a>
-    <a href="#" class="social-link">
-        <i class="fab fa-linkedin-in"></i>          
-    </a>
-    <a href="#" class="social-link">
-        <i class="fab fa-digg"></i>             
-    </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-facebook-f"></i>          
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin-in"></i>          
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-digg"></i>             
+          </a>
         </div>
       </div>
     </div>
