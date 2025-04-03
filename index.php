@@ -125,7 +125,7 @@
           <div class="logo-icon">
           <i class='fab fa-medrt' id="icon"></i>
           </div>
-          <span class="logo-text">Smart Pharmacy</span>
+          <span class="logo-text">Phart</span>
         </div>
         
         <div class="newsletter">
