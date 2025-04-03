@@ -1,45 +1,3 @@
-<?php
-// include 'config.php';
-
-// Controleert of het formulier is ingediend via de POST-methode
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Haalt formuliergegevens op
-    $fullname = $_POST['fullname'];
-    $address = $_POST['address'];
-    $zipcode = $_POST['zipcode'];
-    $city = $_POST['city'];
-    $country = $_POST['country'];
-    $birthdate = $_POST['dob'];
-    $password = $_POST['password'];
-
-    // Wachtwoord wordt gehasht voor veiligheid
-    $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
-
-    try {
-        // Voegt adresgegevens in de 'shipping_address' tabel in
-        $stmt = $pdo->prepare("INSERT INTO shipping_address (Address, Zipcode, City, Country) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$address, $zipcode, $city, $country]);
-
-        // Haalt het ID op van het laatst toegevoegde adres
-        $addressId = $pdo->lastInsertId();
-
-        try {
-            // Voegt gebruiker toe aan de 'users' tabel met het adresId als referentie
-            $stmt = $pdo->prepare("INSERT INTO users (name, password, dateOfBirth, addressId, paymentInfoId, role, archived, ownedItems) 
-                       VALUES (?, ?, ?, ?, NULL, 'user', 0, NULL)");
-            $stmt->execute([$fullname, $encrypted_password, $birthdate, $addressId]);
-        } catch (PDOException $e) {
-            // Foutmelding als er iets misgaat bij het invoegen van de gebruiker
-            echo "Fout bij registratie: " . $e->getMessage();
-        }
-    } catch (PDOException $e) {
-        // Foutmelding als er iets misgaat bij het invoegen van het adres
-        echo "Fout bij registratie: " . $e->getMessage();
-    }
-
-} 
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apothecare - Create Account</title>
-    <link rel="stylesheet" href="CSS/register.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
