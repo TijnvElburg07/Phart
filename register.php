@@ -1,6 +1,5 @@
 <?php
-// Verbindt met de database via 'config.php'
-include 'config.php';
+// include 'config.php';
 
 // Controleert of het formulier is ingediend via de POST-methode
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -37,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Foutmelding als er iets misgaat bij het invoegen van het adres
         echo "Fout bij registratie: " . $e->getMessage();
     }
-}
+
+} 
 ?>
 
 <!DOCTYPE html>
@@ -47,16 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apothecare - Create Account</title>
-    
-    <!-- Link naar de externe CSS-stijl voor de registratiepagina -->
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="CSS/register.css">
 </head>
 
 <body>
     <header>
         <div class="logo-container">
             <div class="logo">
-                <!-- Hier kan een logo geplaatst worden -->
             </div>
             <h1>Apothecare</h1>
         </div>
