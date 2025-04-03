@@ -1,7 +1,5 @@
 <?php
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,21 +44,34 @@
     </section>
 
     <!-- Easy Refills Section -->
-    <section class="feature">
-      <div class="container feature-container">
-        <div class="feature-content">
-          <h2>Easy Refills</h2>
-          <p>Refill prescriptions seamlessly with just a few taps on your phone.</p>
-          <div class="feature-buttons">
-            <button class="btn btn-primary">Try now</button>
-            <button class="btn btn-text">Learn more</button>
-          </div>
-        </div>
-        <div class="feature-image">
-          <img src="https://via.placeholder.com/600x400" alt="Doctor with tablet">
-        </div>
+    <section class="py-12 bg-black text-white">
+  <div class="container mx-auto grid gap-8 md:grid-cols-2 md:items-center">
+    <div class="feature-content">
+      <h2 class="text-3xl font-bold mb-4">Easy Refills</h2>
+      <p class="text-gray-400 mb-6">Refill prescriptions seamlessly with just a few taps on your phone.</p>
+      <div class="flex gap-4">
+        <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Try now</button>
+        <button class="border-2 border-gray-600 text-gray-400 px-6 py-2 rounded hover:bg-gray-600 hover:text-white">
+          Learn more
+        </button>
       </div>
-    </section>
+    </div>
+    <div class="flex flex-col gap-4 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4 bg-gray-800 rounded-lg">
+      <img class="mx-auto block h-24 w-24 rounded-full sm:mx-0 sm:shrink-0" src="/img/erin-lindford.jpg" alt="Erin Lindford" />
+      <div class="space-y-2 text-center sm:text-left">
+        <div class="space-y-0.5">
+          <p class="text-lg font-semibold text-white">Erin Lindford</p>
+          <p class="font-medium text-gray-400">Doctor</p>
+        </div>
+        <button class="border border-purple-400 text-purple-400 px-4 py-2 rounded hover:bg-purple-600 hover:text-white active:bg-purple-700">
+          Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
     <!-- Health Insights Section -->
     <section class="feature">
