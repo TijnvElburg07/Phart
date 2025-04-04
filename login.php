@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['fullname'] = $user['name'];
             $_SESSION['loggedin'] = true;
             
-            header("Location: dashboard.php"); // Doorsturen naar dashboard
+            header("Location: index.php"); // Doorsturen naar dashboard
             exit();
         } else {
             $error = "Ongeldige gebruikersnaam of wachtwoord.";

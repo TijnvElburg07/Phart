@@ -1,5 +1,7 @@
 <?php
+  session_start();
 
+  $name = $_SESSION['fullname'];
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +43,7 @@
     <section class="hero">
       <div class="container">
         <h1>Phart</h1>
+        <h4>Welcome, <?php echo $name ?></h4>
         <p>Your trusted digital companion for managing prescriptions, health, and wellness.</p>
       </div>
     </section>
