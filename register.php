@@ -28,7 +28,7 @@
 
         <!-- Login-knop -->
         <div class="login-button">
-            <button>Log In</button>
+            <button id="login">Log In</button>
         </div>
     </header>
 
@@ -86,5 +86,6 @@
             </form>
         </div>
     </main>
+    <script src="js/register.js"></script>
 </body>
 </html>
