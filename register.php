@@ -13,25 +13,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
     
     try {
-        $stmt = $pdo->prepare("INSERT INTO shipping_address (Address, Zipcode, City, Country) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$address, $zipcode, $city, $country]);
-        $addressId = $pdo->lastInsertId();
-        
-        try {
-            $stmt = $pdo->prepare("INSERT INTO users (name, password, dateOfBirth, addressId, paymentInfoId, role, archived, ownedItems) 
-                       VALUES (?, ?, ?, ?, NULL, 'user', 0, NULL)");
-            $stmt->execute([$fullname, $encrypted_password, $birthdate, $addressId]);
-        } catch (PDOException $e) {
-            echo "Fout bij registratie: " . $e->getMessage();
-        }
+        // Check of de naam al bestaat in de database
+        $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE name = ?");
+        $stmt->execute([$fullname]);
+        $nameCount = $stmt->fetchColumn();
 
+        if ($nameCount > 0) {
+            echo "De gebruikersnaam bestaat al. Kies een andere naam.";
+        } else {
+            // Adres invoegen
+            $stmt = $pdo->prepare("INSERT INTO shipping_address (Address, Zipcode, City, Country) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$address, $zipcode, $city, $country]);
+            $addressId = $pdo->lastInsertId();
+
+            // Gebruiker invoegen
+            try {
+                $stmt = $pdo->prepare("INSERT INTO users (name, password, dateOfBirth, addressId, paymentInfoId, role, archived, ownedItems) 
+                                       VALUES (?, ?, ?, ?, NULL, 'user', 0, NULL)");
+                $stmt->execute([$fullname, $encrypted_password, $birthdate, $addressId]);
+
+                echo "Registratie succesvol!";
+            } catch (PDOException $e) {
+                if ($e->getCode() == 23000) {
+                    echo "Fout: De gebruikersnaam bestaat al.";
+                } else {
+                    echo "Fout bij registratie: " . $e->getMessage();
+                }
+            }
+        }
 
     } catch (PDOException $e) {
         echo "Fout bij registratie: " . $e->getMessage();
     }
-
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
