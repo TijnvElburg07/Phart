@@ -13,7 +13,12 @@ if ($_SESSION['loggedin'] && $_SESSION['loggedin'] == true){
 }
 
 try {
-
+    $stmt = $pdo->prepare("SELECT * FROM users");
+    $stmt->execute();
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($users as $user) {
+        echo "Name:" .$user['name'] . " | Role: " . $user['role'] . "<br>";
+    }
 } catch (Exception $e) {
     echo "Database error: " .$e->getMessage();
 }
