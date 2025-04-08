@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $stmt = $pdo->prepare("INSERT INTO users (name, password, dateOfBirth, addressId, paymentInfoId, role, archived, ownedItems) 
                        VALUES (?, ?, ?, ?, NULL, 'user', 0, NULL)");
             $stmt->execute([$fullname, $encrypted_password, $birthdate, $addressId]);
+            header("Location: login.php");
         } catch (PDOException $e) {
             echo "Fout bij registratie: " . $e->getMessage();
         }

@@ -2,7 +2,13 @@
 include 'config.php'; 
 session_start();
 
-//$name = $_SESSION['fullname'];
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+  header("Location: login.php");
+  exit();
+}
+
+$name = $_SESSION['fullname'];
 ?>
 
 <!DOCTYPE html>

@@ -2,6 +2,8 @@
 session_start();
 include 'config.php';
 
+
+
 // Controleert of het formulier is ingediend via de POST-methode
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST['fullname'];
@@ -18,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['fullname'] = $user['name'];
             $_SESSION['loggedin'] = true;
-            
+            $_SESSION['role'] = $user['role'];
+
             header("Location: index.php"); // Doorsturen naar dashboard
             exit();
         } else {
