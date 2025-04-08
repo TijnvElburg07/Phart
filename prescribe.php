@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <br>
-    <a href="gebruikersbeheer.php">← Terug naar gebruikersbeheer</a>
+    <a href="admin.php">← Terug naar gebruikersbeheer</a>
 
 </body>
 </html>

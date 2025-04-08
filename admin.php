@@ -4,8 +4,6 @@ session_start();
 
 $role = $_SESSION['role'];
 
-echo "Role: " . $role;
-
 if ($role !== 'admin') {
     header("Location: index.php");
     exit();
