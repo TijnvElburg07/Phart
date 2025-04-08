@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Haalt de gebruiker op uit de database
-        $stmt = $pdo->prepare("SELECT id, name, password FROM users WHERE name = ? LIMIT 1");
+        $stmt = $pdo->prepare("SELECT id, name, password, role FROM users WHERE name = ? LIMIT 1");
         $stmt->execute([$fullname]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
