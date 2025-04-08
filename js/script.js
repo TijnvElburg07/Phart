@@ -5,6 +5,8 @@ function headToRegister(){
     })
 }
 
-
+function headToLogout(){
+    window.location.href = 'logout.php'
+}
 
 headToRegister()

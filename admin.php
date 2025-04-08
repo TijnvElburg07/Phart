@@ -1,11 +1,21 @@
 <?php
-include 'config.php';
+require_once 'config.php';
 session_start();
 
-if ($_SESSION['loggedin'] == true){
-    try {
 
+if ($_SESSION['loggedin'] && $_SESSION['loggedin'] == true){
+    $role = $_SESSION['role'];
+
+    if ($role === 'user'){
+        header('Location: index.php');
+        exit();
     }
+}
+
+try {
+
+} catch (Exception $e) {
+    echo "Database error: " .$e->getMessage();
 }
 ?>
 

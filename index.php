@@ -1,12 +1,9 @@
 <?php
-include 'config.php'; 
+require_once 'config.php';
 session_start();
 
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-  header("Location: login.php");
-  exit();
-}
+
 
 $name = $_SESSION['fullname'];
 ?>
@@ -40,10 +37,19 @@ $name = $_SESSION['fullname'];
         <a href="prescription.php">Prescriptions</a>
       </nav>
 
-      <button class="btn btn-primary" id="register-btn">
-        Sign Up
-        <i class='fas fa-id-badge'></i>
-      </button>
+      <?php
+      if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === false) { ?>
+        <button class="btn btn-primary" id="register-btn">
+          Sign Up
+          <i class='fas fa-id-badge'></i>
+        </button>
+
+      <?php } else { ?>
+        <button class="btn btn-primary" id="logout-btn" onclick="headToLogout()">
+          Log out
+          <i class='fas fa-id-badge'></i>
+        </button>
+      <?php } ?>
     </div>
   </header>
 
@@ -138,7 +144,8 @@ $name = $_SESSION['fullname'];
         <p>Sign up now to manage prescriptions, track medications, and enjoy exclusive benefits!</p>
         <a href="#" class="btn-cta">Get started</a>
       </div>
-      <button class="btn btn-primary" id="toggleLlmPopup" style="position: fixed; bottom: 20px; right: 340px; z-index: 1001;">
+      <button class="btn btn-primary" id="toggleLlmPopup"
+        style="position: fixed; bottom: 20px; right: 340px; z-index: 1001;">
         💬 Chat
       </button>
 

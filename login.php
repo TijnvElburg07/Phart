@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config.php';
+require_once 'config.php';
 
 
 
@@ -17,12 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($user && password_verify($password, $user['password'])) {
             // Start sessie en slaat gebruikersgegevens op
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['userId'] = $user['id'];
             $_SESSION['fullname'] = $user['name'];
             $_SESSION['loggedin'] = true;
             $_SESSION['role'] = $user['role'];
 
-            header("Location: index.php"); // Doorsturen naar dashboard
+            header("Location: index.php"); // Doorsturen/redirecten naar dashboard
             exit();
         } else {
             $error = "Ongeldige gebruikersnaam of wachtwoord.";
