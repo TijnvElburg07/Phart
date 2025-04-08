@@ -3,11 +3,11 @@ require_once 'config.php';
 session_start();
 
 
-if ($_SESSION['loggedin'] && $_SESSION['loggedin'] == true){
+if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true){
     $role = $_SESSION['role'];
 
-    if ($role === 'user'){
-        header('Location: index.php');
+    if($role !== 'admin'){
+        header("Location: index.php");
         exit();
     }
 }
