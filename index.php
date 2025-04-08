@@ -1,11 +1,13 @@
 <?php
-  session_start();
+include 'config.php'; 
+session_start();
 
-  $name = $_SESSION['fullname'];
+//$name = $_SESSION['fullname'];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,23 +16,24 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body>  
+
+<body>
   <!-- Header -->
   <header>
     <div class="container header-container">
       <div class="logo">
         <div class="logo-icon">
-        <i class='fab fa-medrt' id="icon"></i>
+          <i class='fab fa-medrt' id="icon"></i>
         </div>
         <span class="logo-text">Phart</span>
       </div>
-      
+
       <nav>
         <a href="index.php" class="active">Home</a>
         <a href="search.php">Advanced Search</a>
         <a href="prescription.php">Prescriptions</a>
       </nav>
-      
+
       <button class="btn btn-primary" id="register-btn">
         Sign Up
         <i class='fas fa-id-badge'></i>
@@ -129,6 +132,10 @@
         <p>Sign up now to manage prescriptions, track medications, and enjoy exclusive benefits!</p>
         <a href="#" class="btn-cta">Get started</a>
       </div>
+      <button class="btn btn-primary" id="toggleLlmPopup" style="position: fixed; bottom: 20px; right: 340px; z-index: 1001;">
+        💬 Chat
+      </button>
+
     </section>
   </main>
 
@@ -142,7 +149,7 @@
           </div>
           <span class="logo-text">Smart Pharmacy</span>
         </div>
-        
+
         <div class="newsletter">
           <p>Subscribe to our newsletter</p>
           <div class="newsletter-form">
@@ -151,7 +158,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="footer-links">
         <div>
           <h4>Product</h4>
@@ -184,7 +191,7 @@
           </ul>
         </div>
       </div>
-      
+
       <div class="footer-bottom">
         <div class="footer-left">
           <select class="language-select">
@@ -204,18 +211,37 @@
             <i class="fab fa-twitter"></i>
           </a>
           <a href="#" class="social-link">
-            <i class="fab fa-facebook-f"></i>          
+            <i class="fab fa-facebook-f"></i>
           </a>
           <a href="#" class="social-link">
-            <i class="fab fa-linkedin-in"></i>          
+            <i class="fab fa-linkedin-in"></i>
           </a>
           <a href="#" class="social-link">
-            <i class="fab fa-digg"></i>             
+            <i class="fab fa-digg"></i>
           </a>
         </div>
       </div>
     </div>
   </footer>
+  <!-- LLM Chat Popup -->
+  <div class="llm-popup" id="llmPopup">
+    <form method="post" action="llm_response.php">
+      <textarea name="prompt" rows="4" placeholder="Stel je vraag..." required></textarea>
+      <input type="submit" value="Verstuur">
+    </form>
+  </div>
   <script src="js/script.js"></script>
+  <script>
+    const toggleBtn = document.getElementById('toggleLlmPopup');
+    const popup = document.getElementById('llmPopup');
+
+    toggleBtn.addEventListener('click', () => {
+      popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
+    });
+
+    // Start hidden
+    popup.style.display = 'none';
+  </script>
 </body>
+
 </html>

@@ -1,3 +1,38 @@
+<?php
+include 'config.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $fullname = $_POST['fullname'];
+    $address = $_POST['address'];
+    $zipcode = $_POST['zipcode'];
+    $city = $_POST['city'];
+    $country = $_POST['country'];
+    $birthdate = $_POST['dob'];
+    $password = $_POST['password'];
+    
+    $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
+    
+    try {
+        $stmt = $pdo->prepare("INSERT INTO shipping_address (Address, Zipcode, City, Country) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$address, $zipcode, $city, $country]);
+        $addressId = $pdo->lastInsertId();
+        
+        try {
+            $stmt = $pdo->prepare("INSERT INTO users (name, password, dateOfBirth, addressId, paymentInfoId, role, archived, ownedItems) 
+                       VALUES (?, ?, ?, ?, NULL, 'user', 0, NULL)");
+            $stmt->execute([$fullname, $encrypted_password, $birthdate, $addressId]);
+        } catch (PDOException $e) {
+            echo "Fout bij registratie: " . $e->getMessage();
+        }
+
+
+    } catch (PDOException $e) {
+        echo "Fout bij registratie: " . $e->getMessage();
+    }
+
+} 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
