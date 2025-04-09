@@ -2,10 +2,10 @@
 require_once 'config.php';
 session_start();
 
-
-
-
-$name = $_SESSION['fullname'];
+// Veilige fallback voor gebruikersnaam
+$name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SESSION['fullname']))
+    ? $_SESSION['fullname']
+    : 'Gast';
 ?>
 
 <!DOCTYPE html>
@@ -37,13 +37,11 @@ $name = $_SESSION['fullname'];
         <a href="prescription.php">Prescriptions</a>
       </nav>
 
-      <?php
-      if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === false) { ?>
+      <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) { ?>
         <button class="btn btn-primary" id="register-btn">
           Sign Up
           <i class='fas fa-id-badge'></i>
         </button>
-
       <?php } else { ?>
         <button class="btn btn-primary" id="logout-btn" onclick="headToLogout()">
           Log out
@@ -58,7 +56,7 @@ $name = $_SESSION['fullname'];
     <section class="hero">
       <div class="container">
         <h1>Phart</h1>
-        <h4>Welcome, <?php echo $name ?></h4>
+        <h4>Welcome, <?php echo htmlspecialchars($name); ?></h4>
         <p>Your trusted digital companion for managing prescriptions, health, and wellness.</p>
       </div>
     </section>
@@ -148,7 +146,6 @@ $name = $_SESSION['fullname'];
         style="position: fixed; bottom: 20px; right: 340px; z-index: 1001;">
         💬 Chat
       </button>
-
     </section>
   </main>
 
@@ -236,6 +233,7 @@ $name = $_SESSION['fullname'];
       </div>
     </div>
   </footer>
+
   <!-- LLM Chat Popup -->
   <div class="llm-popup" id="llmPopup">
     <form method="post" action="llm_response.php">
@@ -243,6 +241,7 @@ $name = $_SESSION['fullname'];
       <input type="submit" value="Verstuur">
     </form>
   </div>
+
   <script src="js/script.js"></script>
   <script>
     const toggleBtn = document.getElementById('toggleLlmPopup');
