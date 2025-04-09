@@ -22,21 +22,19 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
 
 <body>
   <!-- Header -->
-  <header>
-    <div class="container header-container">
-      <div class="logo">
-        <div class="logo-icon">
-          <i class='fab fa-medrt' id="icon"></i>
+  <header class="header">
+  <div style="display: flex; ">
+            <div class="logo">
+                <i class='fab fa-medrt' id="icon"></i>
+            </div>
+            <span>Phart</span>
         </div>
-        <span class="logo-text">Phart</span>
-      </div>
-
-      <nav>
-        <a href="index.php" class="active">Home</a>
-        <a href="search.php">Advanced Search</a>
-        <a href="prescription.php">Prescriptions</a>
-      </nav>
-
+        <nav class="nav">
+            <a href="index.php" class="nav-item active">Home</a>
+            <a href="search.php" class="nav-item">Advanced Search</a>
+            <a href="prescription.php" class="nav-item">Prescriptions</a>
+        </nav>
+        </div>
       <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) { ?>
         <button class="btn btn-primary" id="register-btn">
           Sign Up
