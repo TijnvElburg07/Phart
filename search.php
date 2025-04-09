@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apothecare</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/search.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apothecare</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
     <header class="header">
         <div style="display: flex; align-items: center;">
             <div class="logo">
-                <span class="logo-icon">⚡</span>
-                <span>Apothecare</span>
+                <i class='fab fa-medrt' id="icon"></i>
             </div>
-            <nav class="nav">
-                <a href="index.php" class="nav-item">Home</a>
-                <a href="search.php" class="nav-item active">Advanced Search</a>
-                <a href="prescription.php" class="nav-item">Prescriptions</a>
-            </nav>
+            <span>Phart</span>
+        </div>
+        <nav class="nav">
+            <a href="index.php" class="nav-item">Home</a>
+            <a href="search.php" class="nav-item active">Advanced Search</a>
+            <a href="prescription.php" class="nav-item ">Prescriptions</a>
+        </nav>
         </div>
         <div class="header-right">
-            <button class="icon-btn">🔔</button>
-            <button class="icon-btn">⚙️</button>
-            <button class="icon-btn">🔍</button>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-cog"></i>
+            <i class="fas fa-search"></i>
             <img src="/placeholder.svg?height=35&width=35" alt="Profile" class="profile">
         </div>
     </header>
@@ -43,7 +47,8 @@
         <div class="product-grid">
             <!-- Aspirin -->
             <div class="product-card">
-                <img src="/placeholder.svg?height=250&width=250" alt="Aspirin" class="product-image" style="background-color: #FFDD80;">
+                <img src="/placeholder.svg?height=250&width=250" alt="Aspirin" class="product-image"
+                    style="background-color: #FFDD80;">
                 <div class="product-info">
                     <h3 class="product-name">Aspirin</h3>
                     <p class="product-description">Pain relief medication</p>
@@ -54,7 +59,8 @@
 
             <!-- Ibuprofen -->
             <div class="product-card">
-                <img src="/placeholder.svg?height=250&width=250" alt="Ibuprofen" class="product-image" style="background-color: #E0E0E0;">
+                <img src="/placeholder.svg?height=250&width=250" alt="Ibuprofen" class="product-image"
+                    style="background-color: #E0E0E0;">
                 <div class="product-info">
                     <h3 class="product-name">Ibuprofen</h3>
                     <p class="product-description">Anti-inflammatory drug</p>
@@ -65,7 +71,8 @@
 
             <!-- Paracetamol -->
             <div class="product-card">
-                <img src="/placeholder.svg?height=250&width=250" alt="Paracetamol" class="product-image" style="background-color: #F5F5F5;">
+                <img src="/placeholder.svg?height=250&width=250" alt="Paracetamol" class="product-image"
+                    style="background-color: #F5F5F5;">
                 <div class="product-info">
                     <h3 class="product-name">Paracetamol</h3>
                     <p class="product-description">Fever and pain reducer</p>
@@ -76,7 +83,8 @@
 
             <!-- Hydrocortisone -->
             <div class="product-card">
-                <img src="/placeholder.svg?height=250&width=250" alt="Hydrocortisone" class="product-image" style="background-color: #E8E0D5;">
+                <img src="/placeholder.svg?height=250&width=250" alt="Hydrocortisone" class="product-image"
+                    style="background-color: #E8E0D5;">
                 <div class="product-info">
                     <h3 class="product-name">Hydrocortisone</h3>
                     <p class="product-description">Skin inflammation treatment</p>
@@ -87,7 +95,8 @@
 
             <!-- Vitamin C -->
             <div class="product-card">
-                <img src="/placeholder.svg?height=250&width=250" alt="Vitamin C" class="product-image" style="background-color: #FFE0B2;">
+                <img src="/placeholder.svg?height=250&width=250" alt="Vitamin C" class="product-image"
+                    style="background-color: #FFE0B2;">
                 <div class="product-info">
                     <h3 class="product-name">Vitamin C</h3>
                     <p class="product-description">Immune support supplement</p>
@@ -98,7 +107,8 @@
 
             <!-- Albuterol -->
             <div class="product-card">
-                <img src="/placeholder.svg?height=250&width=250" alt="Albuterol" class="product-image" style="background-color: #E6E6FA;">
+                <img src="/placeholder.svg?height=250&width=250" alt="Albuterol" class="product-image"
+                    style="background-color: #E6E6FA;">
                 <div class="product-info">
                     <h3 class="product-name">Albuterol</h3>
                     <p class="product-description">Asthma and COPD treatment</p>
@@ -109,7 +119,8 @@
 
             <!-- Loratadine -->
             <div class="product-card">
-                <img src="/placeholder.svg?height=250&width=250" alt="Loratadine" class="product-image" style="background-color: #E0F2F1;">
+                <img src="/placeholder.svg?height=250&width=250" alt="Loratadine" class="product-image"
+                    style="background-color: #E0F2F1;">
                 <div class="product-info">
                     <h3 class="product-name">Loratadine</h3>
                     <p class="product-description">Non-drowsy allergy relief</p>
@@ -120,7 +131,8 @@
 
             <!-- Calcium -->
             <div class="product-card">
-                <img src="/placeholder.svg?height=250&width=250" alt="Calcium" class="product-image" style="background-color: #F5F5F5;">
+                <img src="/placeholder.svg?height=250&width=250" alt="Calcium" class="product-image"
+                    style="background-color: #F5F5F5;">
                 <div class="product-info">
                     <h3 class="product-name">Calcium</h3>
                     <p class="product-description">Bone health support</p>
@@ -131,4 +143,5 @@
         </div>
     </div>
 </body>
+
 </html>
