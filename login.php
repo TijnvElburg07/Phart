@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Haalt de gebruiker op uit de database
-        $stmt = $pdo->prepare("SELECT id, name, password FROM users WHERE name = ? LIMIT 1");
+        $stmt = $pdo->prepare("SELECT id, name, password, role FROM users WHERE name = ? LIMIT 1");
         $stmt->execute([$fullname]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['fullname'] = $user['name'];
             $_SESSION['loggedin'] = true;
+            $_SESSION['role'] = $user['role'];
+
             
             header("Location: index.php"); // Doorsturen naar dashboard
             exit();
