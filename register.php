@@ -42,31 +42,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apothecare - Create Account</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <div class="logo-container">
+<header class="header">
+  <div style="display: flex; ">
             <div class="logo">
+                <i class='fab fa-medrt' id="icon"></i>
             </div>
-            <h1>Apothecare</h1>
+            <span>Phart</span>
         </div>
-        
-        <!-- Navigatiemenu -->
-        <nav>
-            <ul>
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="search.php">Advanced Search</a></li>
-                <li><a href="prescription.php">Prescriptions</a></li>
-            </ul>
+        <nav class="nav">
+            <a href="index.php" class="nav-item active">Home</a>
+            <a href="search.php" class="nav-item">Advanced Search</a>
+            <a href="prescription.php" class="nav-item">Prescriptions</a>
         </nav>
-
-        <!-- Login-knop -->
-        <div class="login-button">
-            <button id="login">Log In</button>
+        <div>
+            <button class="btn btn-primary" id="login">Log In</button>
         </div>
-    </header>
+        </header>
 
     <main>
         <div class="form-container">

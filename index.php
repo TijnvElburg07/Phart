@@ -4,8 +4,8 @@ session_start();
 
 // Veilige fallback voor gebruikersnaam
 $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SESSION['fullname']))
-    ? $_SESSION['fullname']
-    : 'Gast';
+  ? $_SESSION['fullname']
+  : 'Gast';
 ?>
 
 <!DOCTYPE html>
@@ -16,36 +16,35 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phart - Your Digital Health Companion</title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
   <!-- Header -->
   <header class="header">
-  <div style="display: flex; ">
-            <div class="logo">
-                <i class='fab fa-medrt' id="icon"></i>
-            </div>
-            <span>Phart</span>
-        </div>
-        <nav class="nav">
-            <a href="index.php" class="nav-item active">Home</a>
-            <a href="search.php" class="nav-item">Advanced Search</a>
-            <a href="prescription.php" class="nav-item">Prescriptions</a>
-        </nav>
-        </div>
-      <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) { ?>
-        <button class="btn btn-primary" id="register-btn">
-          Sign Up
-          <i class='fas fa-id-badge'></i>
-        </button>
-      <?php } else { ?>
-        <button class="btn btn-primary" id="logout-btn" onclick="headToLogout()">
-          Log out
-          <i class='fas fa-id-badge'></i>
-        </button>
-      <?php } ?>
+    <div style="display: flex; ">
+      <div class="logo">
+        <i class='fab fa-medrt' id="icon"></i>
+      </div>
+      <span>Phart</span>
+    </div>
+    <nav class="nav">
+      <a href="index.php" class="nav-item active">Home</a>
+      <a href="search.php" class="nav-item">Advanced Search</a>
+      <a href="prescription.php" class="nav-item">Prescriptions</a>
+    </nav>
+    </div>
+    <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) { ?>
+      <button class="btn btn-primary" id="register-btn">
+        Sign Up
+        <i class='fas fa-id-badge'></i>
+      </button>
+    <?php } else { ?>
+      <button class="btn btn-primary" id="logout-btn" onclick="headToLogout()">
+        Log out
+        <i class='fas fa-id-badge'></i>
+      </button>
+    <?php } ?>
     </div>
   </header>
 
@@ -234,11 +233,11 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
 
   <!-- LLM Chat Popup -->
   <div class="llm-popup" id="llmPopup">
-    <form method="post" action="llm_response.php">
-      <textarea name="prompt" rows="4" placeholder="Stel je vraag..." required></textarea>
+    <form method="post" id="llmform">
+      <textarea name="prompt" id="prompt" rows="4" placeholder="Stel je vraag..." required></textarea>
       <input type="submit" value="Verstuur">
     </form>
-  </div>
+    </div>
 
   <script src="js/script.js"></script>
   <script>
