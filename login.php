@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         body {
-            background-color: #004952;
+            background-color: #1E1E1E;
             color: white;
             min-height: 100vh;
         }
@@ -107,9 +107,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .login-container {
             max-width: 1000px;
             margin: 60px auto;
-            background-color: #1a1a1a;
-            border-radius: 5px;
+            background-color: #121212;
+            border-radius: 20px;
             padding: 40px;
+            border-color: white;
+            border-width: 1px;
+            border-style: solid;
         }
 
         .login-form {
@@ -175,13 +178,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             Apothecare
         </div>
         <div class="nav-links">
-            <a href="#" class="active">Home</a>
-            <a href="#">Advanced Search</a>
-            <a href="#">Prescriptions</a>
+            <a href="index.php" class="active">Home</a>
+            <a href="search.php">Advanced Search</a>
+            <a href="prescription.php">Prescriptions</a>
         </div>
-        <button class="signup-btn">
-            <span>👤</span>
-            SignUp
+        <button>
+            <a href="register.php" class="signup-btn">Sign Up</a>
         </button>
     </nav>
 
