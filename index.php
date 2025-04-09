@@ -1,37 +1,50 @@
 <?php
+require_once 'config.php';
+session_start();
 
+// Veilige fallback voor gebruikersnaam
+$name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset($_SESSION['fullname']))
+  ? $_SESSION['fullname']
+  : 'Gast';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phart - Your Digital Health Companion</title>
-  <link rel="stylesheet" href="css/style.css" >
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body>  
+
+<body>
   <!-- Header -->
-  <header>
-    <div class="container header-container">
+  <header class="header">
+    <div style="display: flex; ">
       <div class="logo">
-        <div class="logo-icon">
         <i class='fab fa-medrt' id="icon"></i>
-        </div>
-        <span class="logo-text">Phart</span>
       </div>
-      
-      <nav>
-        <a href="index.php" class="active">Home</a>
-        <a href="search.php">Advanced Search</a>
-        <a href="prescription.php">Prescriptions</a>
-      </nav>
-      
+      <span>Phart</span>
+    </div>
+    <nav class="nav">
+      <a href="index.php" class="nav-item active">Home</a>
+      <a href="search.php" class="nav-item">Advanced Search</a>
+      <a href="prescription.php" class="nav-item">Prescriptions</a>
+    </nav>
+    </div>
+    <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) { ?>
       <button class="btn btn-primary" id="register-btn">
         Sign Up
         <i class='fas fa-id-badge'></i>
       </button>
+    <?php } else { ?>
+      <button class="btn btn-primary" id="logout-btn" onclick="headToLogout()">
+        Log out
+        <i class='fas fa-id-badge'></i>
+      </button>
+    <?php } ?>
     </div>
   </header>
 
@@ -39,8 +52,8 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <h1>Phart
-</h1>
+        <h1>Phart</h1>
+        <h4>Welcome, <?php echo htmlspecialchars($name); ?></h4>
         <p>Your trusted digital companion for managing prescriptions, health, and wellness.</p>
       </div>
     </section>
@@ -66,7 +79,7 @@
     <section class="feature">
       <div class="container feature-container reverse">
         <div class="feature-image">
-          <img src="Images/mobile_app.png" alt="Mobile app">
+          <img src="https://via.placeholder.com/600x400" alt="Mobile app">
         </div>
         <div class="feature-content">
           <h2>Health Insights</h2>
@@ -83,9 +96,16 @@
     <section class="testimonial">
       <div class="container testimonial-container">
         <div class="testimonial-image">
-          <img src="Images/review_woman.png" alt="Customer testimonial">
+          <img src="https://via.placeholder.com/300x300" alt="Customer testimonial">
         </div>
         <div class="testimonial-content">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
           <p class="testimonial-text">
             Phart has made my life so much easier! Their fast delivery and excellent customer service are unmatched.
           </p>
@@ -93,13 +113,18 @@
             <h4>Emily Johnson</h4>
             <p>Health Blogger</p>
           </div>
-          <div class="testimonial-nav">         
+          <div class="testimonial-nav">
+            <div class="dots">
+              <div class="dot active"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
             <div class="nav-buttons">
               <button class="nav-btn">
-              <i class="fa fa-angle-left"></i>
+                <i class="fa fa-angle-left"></i>
               </button>
               <button class="nav-btn">
-              <i class="fa fa-angle-right"></i>
+                <i class="fa fa-angle-right"></i>
               </button>
             </div>
           </div>
@@ -112,8 +137,12 @@
       <div class="container">
         <h2>Join Phart Today!</h2>
         <p>Sign up now to manage prescriptions, track medications, and enjoy exclusive benefits!</p>
-        <button class="btn btn-cta" >Get started</button>
+        <a href="#" class="btn-cta">Get started</a>
       </div>
+      <button class="btn btn-primary" id="toggleLlmPopup"
+        style="position: fixed; bottom: 20px; right: 340px; z-index: 1001;">
+        💬 Chat
+      </button>
     </section>
   </main>
 
@@ -123,11 +152,11 @@
       <div class="footer-top">
         <div class="footer-logo">
           <div class="logo-icon">
-          <i class='fab fa-medrt' id="icon"></i>
+            <i class='fab fa-medrt' id="icon"></i>
           </div>
           <span class="logo-text">Phart</span>
         </div>
-        
+
         <div class="newsletter">
           <p>Subscribe to our newsletter</p>
           <div class="newsletter-form">
@@ -136,7 +165,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="footer-links">
         <div>
           <h4>Product</h4>
@@ -169,7 +198,7 @@
           </ul>
         </div>
       </div>
-      
+
       <div class="footer-bottom">
         <div class="footer-left">
           <select class="language-select">
@@ -185,22 +214,43 @@
           <a href="#">Sitemap</a>
         </div>
         <div class="social-links">
-    <a href="#" class="social-link">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="#" class="social-link">
-        <i class="fab fa-facebook-f"></i>          
-    </a>
-    <a href="#" class="social-link">
-        <i class="fab fa-linkedin-in"></i>          
-    </a>
-    <a href="#" class="social-link">
-        <i class="fab fa-digg"></i>             
-    </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-digg"></i>
+          </a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- LLM Chat Popup -->
+  <div class="llm-popup" id="llmPopup">
+    <form method="post" id="llmform">
+      <textarea name="prompt" id="prompt" rows="4" placeholder="Stel je vraag..." required></textarea>
+      <input type="submit" value="Verstuur">
+    </form>
+    </div>
+
   <script src="js/script.js"></script>
+  <script>
+    const toggleBtn = document.getElementById('toggleLlmPopup');
+    const popup = document.getElementById('llmPopup');
+
+    toggleBtn.addEventListener('click', () => {
+      popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
+    });
+
+    // Start hidden
+    popup.style.display = 'none';
+  </script>
 </body>
+
 </html>

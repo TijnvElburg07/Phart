@@ -4,32 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>phart - Upload Prescription</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/prescription.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/prescription.css">
-
 </head>
 <body>
-    <header>
-        <div class="logo">
-        <i class='fab fa-medrt' id="icon"></i>
-            <h1>phart</h1>
+<header class="header">
+        <div style="display: flex; align-items: center;">
+            <div class="logo">
+                <i class='fab fa-medrt' id="icon"></i>
+            </div>
+            <span>Phart</span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="search.php">Advanced Search</a></li>
-                <li><a href="prescription.php" class="active">Prescriptions</a></li>
-            </ul>
+        <nav class="nav">
+            <a href="index.php" class="nav-item">Home</a>
+            <a href="search.php" class="nav-item ">Advanced Search</a>
+            <a href="prescription.php" class="nav-item active">Prescriptions</a>
         </nav>
-        <div class="user-controls">
+        </div>
+        <div class="header-right">
             <i class="fas fa-bell"></i>
             <i class="fas fa-cog"></i>
             <i class="fas fa-search"></i>
-            <div class="avatar">
-                <img src="/placeholder.svg?height=40&width=40" alt="User avatar">
-            </div>
+            <img src="/placeholder.svg?height=35&width=35" alt="Profile" class="profile">
         </div>
     </header>
 

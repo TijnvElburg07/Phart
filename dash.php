@@ -1,9 +1,20 @@
+<?php
+require_once 'config.php';
+session_start();
+
+if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === false) {
+  header("Location: login.php");
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>phart</title>
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/dash.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>

@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+require_once 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $fullname = $_POST['fullname'];
@@ -13,38 +13,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $encrypted_password = password_hash($password, PASSWORD_DEFAULT);
     
     try {
-        // Check of de naam al bestaat in de database
-        $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE name = ?");
-        $stmt->execute([$fullname]);
-        $nameCount = $stmt->fetchColumn();
-
-        if ($nameCount > 0) {
-            echo "De gebruikersnaam bestaat al. Kies een andere naam.";
-        } else {
-            // Adres invoegen
-            $stmt = $pdo->prepare("INSERT INTO shipping_address (Address, Zipcode, City, Country) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$address, $zipcode, $city, $country]);
-            $addressId = $pdo->lastInsertId();
-
-            // Gebruiker invoegen
-            try {
-                $stmt = $pdo->prepare("INSERT INTO users (name, password, dateOfBirth, addressId, paymentInfoId, role, archived, ownedItems) 
-                                       VALUES (?, ?, ?, ?, NULL, 'user', 0, NULL)");
-                $stmt->execute([$fullname, $encrypted_password, $birthdate, $addressId]);
-
-                echo "Registratie succesvol!";
-            } catch (PDOException $e) {
-                if ($e->getCode() == 23000) {
-                    echo "Fout: De gebruikersnaam bestaat al.";
-                } else {
-                    echo "Fout bij registratie: " . $e->getMessage();
-                }
-            }
+        $stmt = $pdo->prepare("INSERT INTO shipping_address (Address, Zipcode, City, Country) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$address, $zipcode, $city, $country]);
+        $addressId = $pdo->lastInsertId();
+        
+        try {
+            $stmt = $pdo->prepare("INSERT INTO users (name, password, dateOfBirth, addressId, paymentInfoId, role, archived, ownedItems) 
+                       VALUES (?, ?, ?, ?, NULL, 'user', 0, NULL)");
+            $stmt->execute([$fullname, $encrypted_password, $birthdate, $addressId]);
+        } catch (PDOException $e) {
+            echo "Fout bij registratie: " . $e->getMessage();
         }
 
     } catch (PDOException $e) {
         echo "Fout bij registratie: " . $e->getMessage();
     }
+
 }
 ?>
 
@@ -56,34 +40,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apothecare - Create Account</title>
-    <link rel="stylesheet" href="CSS/login.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
-    <header>
-        <div class="logo-container">
+<header class="header">
+  <div style="display: flex; ">
             <div class="logo">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 25L15 5L20 15L25 5L15 25H5Z" fill="#00D1FF" stroke="#00D1FF" stroke-width="2" />
-                </svg>
+                <i class='fab fa-medrt' id="icon"></i>
             </div>
-            <h1>Apothecare</h1>
+            <span>Phart</span>
         </div>
-        <nav>
-            <ul>
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="search.php">Advanced Search</a></li>
-                <li><a href="prescription.php">Prescriptions</a></li>
-            </ul>
+        <nav class="nav">
+            <a href="index.php" class="nav-item active">Home</a>
+            <a href="search.php" class="nav-item">Advanced Search</a>
+            <a href="prescription.php" class="nav-item">Prescriptions</a>
         </nav>
-        <div class="login-button">
-            <button>Log In</button>
+        <div>
+            <button class="btn btn-primary" id="login">Log In</button>
         </div>
-    </header>
+        </header>
 
     <main>
         <div class="form-container">
             <h2>CREATE ACCOUNT</h2>
 
+            <!-- Registratieformulier -->
             <form action="register.php" method="post">
                 <div class="form-group">
                     <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
@@ -118,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
                 </div>
 
+                <!-- Akkoord met de voorwaarden -->
                 <div class="terms">
                     <label>
                         <input type="checkbox" name="terms" id="terms" required>
@@ -125,11 +109,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     </label>
                 </div>
 
+                <!-- Verzenden van het formulier -->
                 <div class="submit-button">
                     <button type="submit">Sign Up</button>
                 </div>
             </form>
         </div>
     </main>
+    <script src="js/register.js"></script>
 </body>
 </html>
