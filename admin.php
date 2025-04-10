@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Verplaats het bestand naar de juiste map
             if (!isset($errorMsg) && move_uploaded_file($fileTmpName, $uploadPath)) {
                 // Sla alleen de bestandsnaam op in de database (geen pad)
-                $thumbnail_name = $newFileName; 
+                $thumbnail_name = $newFileName;
             } else {
                 $errorMsg = "Er is een fout opgetreden bij het uploaden van de afbeelding.";
             }
@@ -94,52 +94,216 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gebruikersbeheer & Item toevoegen</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Main container to create the two-column layout */
+        body:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Left column - User list */
+        h1,
         .user-container {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ccc;
+            float: left;
+            width: 45%;
+            box-sizing: border-box;
+        }
+
+        /* Right column - Add item form */
+        h2,
+        form,
+        .success,
+        .error {
+            float: right;
+            width: 45%;
+            box-sizing: border-box;
+        }
+
+        /* Header styling */
+        h1,
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        /* User container styling */
+        .user-container {
+            background-color: #242424;
             border-radius: 8px;
-            width: fit-content;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Adjust spacing within user-container */
+        .user-container strong {
+            margin-right: 4px;
+            /* Reduced space after the label */
+        }
+
+        /* Add spacing between name/role sections */
+        .user-container strong:nth-of-type(1) {
+            margin-right: 4px;
+        }
+
+        /* Add more spacing between name value and role label */
+        .user-container strong:nth-of-type(2) {
+            margin-left: 15px;
+            /* Space between name value and role label */
+        }
+
+        /* Button styling */
+        .user-container button,
+        input[type="submit"] {
+            background-color: #00c8ff;
+            color: black;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
         }
 
         .user-container button {
-            margin-left: 10px;
+            background-color: transparent;
+            border: 1px solid #00c8ff;
+            color: #00c8ff;
         }
 
+        .user-container button:hover,
+        input[type="submit"]:hover {
+            background-color: #00a8e0;
+        }
+
+        .user-container button:hover {
+            background-color: rgba(0, 200, 255, 0.1);
+        }
+
+        /* Form styling */
         form {
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px solid #999;
-            border-radius: 10px;
-            max-width: 400px;
-        }
-
-        form input, form textarea {
-            display: block;
-            margin-bottom: 10px;
             width: 100%;
-            padding: 6px;
+            display: flex;
+            flex-direction: column;
         }
 
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        /* Adjust spacing for form elements */
+        form label {
+            margin-right: 5px;
+        }
+
+        form input[type="text"],
+        form input[type="number"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* File input styling */
+        form input[type="file"] {
+            margin-bottom: 15px;
+        }
+
+        /* Submit button styling */
+        form input[type="submit"] {
+            align-self: flex-start;
+        }
+
+        /* Message styling */
         .success {
-            color: green;
+            background-color: rgba(0, 200, 83, 0.2);
+            color: #00c853;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
         }
 
         .error {
-            color: red;
+            background-color: rgba(255, 51, 102, 0.2);
+            color: #ff3366;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+
+            h1,
+            .user-container,
+            h2,
+            form,
+            .success,
+            .error {
+                float: none;
+                width: 100%;
+            }
         }
     </style>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-
+    <header class="header">
+        <div style="display: flex; align-items: center;">
+            <div class="logo">
+                <i class='fab fa-medrt' id="icon"></i>
+            </div>
+            <span>Phart</span>
+        </div>
+        <nav class="nav">
+            <a href="index.php" class="nav-item">Home</a>
+            <a href="search.php" class="nav-item">Advanced Search</a>
+            <a href="prescription.php" class="nav-item ">Prescriptions</a>
+        </nav>
+        </div>
+        <div class="header-right">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-cog"></i>
+            <i class="fas fa-search"></i>
+            <img src="/placeholder.svg?height=35&width=35" alt="Profile" class="profile">
+        </div>
+    </header>
+    <br>
     <h1>Gebruikerslijst</h1>
 
     <?php foreach ($users as $user): ?>
@@ -177,4 +341,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 
 </body>
+
 </html>
