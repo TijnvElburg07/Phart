@@ -25,9 +25,9 @@ img {
 }
 
 /* Header styles */
-header {
-  padding: 1rem 0rem;
-}
+  header {
+    padding: 1rem 0rem;
+  }
 
 .logo {
   display: flex;
@@ -204,6 +204,7 @@ main {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-left: auto;
 }
 
 /* User profile and wallet section */

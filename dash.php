@@ -15,40 +15,30 @@ if (!isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === false) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>phart</title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/dash.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <div class="header-left">
-      <div class="logo">
-        <div class="logo-icon">
-        <i class='fab fa-medrt' id="icon"></i>
+  <header class="header">
+        <div style="display: flex; align-items: center;">
+            <div class="logo">
+                <i class='fab fa-medrt' id="icon"></i>
+            </div>
+            <span>Phart</span>
         </div>
-        <span class="logo-text">phart</span>
-      </div>
-      <nav>
-        <a href="index.php" class="active">Home</a>
-        <a href="search.php">Advanced Search</a>
-        <a href="prescription.php">Prescriptions</a>
-      </nav>
-    </div>
-    <div class="header-right">
-      <button class="icon-button">
-      <i class='fas fa-bell'></i>
-      </button>
-      <button class="icon-button">
-      <i class='fas fa-cog'></i>
-      </button>
-      <button class="icon-button">
-      <i class="fa fa-search"></i>
-      </button>
-      <div class="avatar">
-        <img src="https://via.placeholder.com/32" alt="User avatar">
-      </div>
-    </div>
-  </header>
+        <nav class="nav">
+            <a href="index.php" class="nav-item">Home</a>
+            <a href="search.php" class="nav-item active">Advanced Search</a>
+            <a href="prescription.php" class="nav-item ">Prescriptions</a>
+        </nav>
+        </div>
+        <div class="header-right">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-cog"></i>
+            <i class="fas fa-search"></i>
+            <img src="/placeholder.svg?height=35&width=35" alt="Profile" class="profile">
+        </div>
+    </header>
 
   <!-- Main Content -->
   <main>

@@ -34,17 +34,22 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
       <a href="prescription.php" class="nav-item">Prescriptions</a>
     </nav>
     </div>
-    <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) { ?>
-      <button class="btn btn-primary" id="register-btn">
-        Sign Up
-        <i class='fas fa-id-badge'></i>
-      </button>
-    <?php } else { ?>
-      <button class="btn btn-primary" id="logout-btn" onclick="headToLogout()">
-        Log out
-        <i class='fas fa-id-badge'></i>
-      </button>
-    <?php } ?>
+    <div class="header-right">
+      <i class="fas fa-bell"></i>
+      <i class="fas fa-cog"></i>
+      <i class="fas fa-search"></i>
+      <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) { ?>
+        <button class="btn btn-primary" id="register-btn">
+          Sign Up
+          <i class='fas fa-id-badge'></i>
+        </button>
+      <?php } else { ?>
+        <button class="btn btn-primary" id="logout-btn" onclick="headToLogout()">
+          Log out
+          <i class='fas fa-id-badge'></i>
+        </button>
+      <?php } ?>
+    </div>
     </div>
   </header>
 
@@ -233,11 +238,12 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
 
   <!-- LLM Chat Popup -->
   <div class="llm-popup" id="llmPopup">
-    <form method="post" id="llmform">
+    <form id="llmform">
       <textarea name="prompt" id="prompt" rows="4" placeholder="Stel je vraag..." required></textarea>
       <input type="submit" value="Verstuur">
     </form>
-    </div>
+  </div>
+  <div id="llmresponse"></div>
 
   <script src="js/script.js"></script>
   <script>
@@ -250,6 +256,20 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
 
     // Start hidden
     popup.style.display = 'none';
+
+    document.getElementById('llmForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const prompt = document.getElementById('prompt').value;
+
+      const res = await fetch('/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      });
+
+      const data = await res.json();
+      document.getElementById('llmResponse').textContent = data.response || 'Geen antwoord ontvangen.';
+    });
   </script>
 </body>
 
