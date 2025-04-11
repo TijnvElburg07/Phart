@@ -30,7 +30,7 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
     </div>
     <nav class="nav">
       <a href="index.php" class="nav-item active">Home</a>
-      <a href="search.php" class="nav-item">Advanced Search</a>
+      <a href="items.php" class="nav-item">Producten</a>
       <a href="prescription.php" class="nav-item">Prescriptions</a>
     </nav>
     </div>
