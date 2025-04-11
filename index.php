@@ -79,7 +79,7 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
     <section class="feature">
       <div class="container feature-container reverse">
         <div class="feature-image">
-          <img src="https://via.placeholder.com/600x400" alt="Mobile app">
+          <img src="Images/mobile_app.png" alt="Mobile app">
         </div>
         <div class="feature-content">
           <h2>Health Insights</h2>
@@ -96,7 +96,7 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
     <section class="testimonial">
       <div class="container testimonial-container">
         <div class="testimonial-image">
-          <img src="https://via.placeholder.com/300x300" alt="Customer testimonial">
+          <img src="Images/review_woman.png" alt="Customer testimonial">
         </div>
         <div class="testimonial-content">
           <div class="stars">
