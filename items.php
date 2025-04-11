@@ -19,6 +19,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title>Itemoverzicht</title>
@@ -43,7 +44,7 @@ try {
             display: flex;
             align-items: flex-start;
             gap: 20px;
-            box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .item-image img {
@@ -65,10 +66,46 @@ try {
             font-weight: bold;
             color: #27ae60;
         }
+
+        #item-btn {
+            margin-left: auto;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+
+        }
+
+        .item-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #item-btn {
+            background-color: #00d4ff;
+            color: #000000;
+        }
+
+        #item-btn:hover {
+            border: 1px solid #00d4ff;
+            color: #00d4ff;
+            background-color: #000000;
+        }
+
+        .btn-wrapper {
+            margin-left: auto;
+        }
     </style>
 </head>
+
 <body>
-<header class="header">
+    <header class="header">
         <div style="display: flex; align-items: center;">
             <div class="logo">
                 <i class='fab fa-medrt' id="icon"></i>
@@ -89,32 +126,37 @@ try {
         </div>
     </header>
 
-<div class="container">
-    <h1>Beschikbare Items</h1>
+    <div class="container">
+        <h1>Beschikbare Items</h1>
 
-    <?php if (empty($items)): ?>
-        <p>Er zijn nog geen items beschikbaar.</p>
-    <?php else: ?>
-        <?php foreach ($items as $item): ?>
-            <div class="item-card">
-                <div class="item-image">
-                    <?php if (!empty($item['thumbnail'])): ?>
-                        <!-- Als er een thumbnail is opgeslagen, toon deze dan -->
-                        <img src="<?= htmlspecialchars("Images/thumbnails/" .$item['thumbnail']) ?>" alt="Item afbeelding">
-                    <?php else: ?>
-                        <!-- Als er geen thumbnail is, toon een placeholder -->
-                        <img src="https://via.placeholder.com/120?text=Geen+Afbeelding" alt="Geen afbeelding">
-                    <?php endif; ?>
+        <?php if (empty($items)): ?>
+            <p>Er zijn nog geen items beschikbaar.</p>
+        <?php else: ?>
+            <?php foreach ($items as $item): ?>
+                <div class="item-card">
+                    <div class="item-image">
+                        <?php if (!empty($item['thumbnail'])): ?>
+                            <!-- Als er een thumbnail is opgeslagen, toon deze dan -->
+                            <img src="<?= htmlspecialchars("Images/thumbnails/" . $item['thumbnail']) ?>" alt="Item afbeelding">
+                        <?php else: ?>
+                            <!-- Als er geen thumbnail is, toon een placeholder -->
+                            <img src="https://via.placeholder.com/120?text=Geen+Afbeelding" alt="Geen afbeelding">
+                        <?php endif; ?>
+                    </div>
+                    <div class="item-details">
+                        <h2><?= htmlspecialchars($item['name']) ?></h2><br>
+                        <p class="price">€<?= number_format($item['price'], 2, ',', '.') ?></p><br>
+                        <p><?= nl2br(htmlspecialchars($item['description'])) ?></p><br>
+                        <div class="btn-wrapper">
+                            <button id="item-btn">
+                                Koop nu
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="item-details">
-                    <h2><?= htmlspecialchars($item['name']) ?></h2>
-                    <p class="price">€<?= number_format($item['price'], 2, ',', '.') ?></p>
-                    <p><?= nl2br(htmlspecialchars($item['description'])) ?></p>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-</div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
 
-</body>
 </html>
