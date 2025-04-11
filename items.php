@@ -28,63 +28,90 @@ try {
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
         }
 
         .item-card {
-            border: 1px solid #ccc;
+            border: 1px solid #333;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             margin-bottom: 20px;
             display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            background-color: #1a1a1a;
+        }
+
+        .item-image {
+            width: 150px;
+            height: 150px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 10px;
         }
 
         .item-image img {
-            max-width: 120px;
-            height: auto;
-            border-radius: 8px;
-            border: 1px solid #ddd;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
         .item-details {
             flex: 1;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .item-details h2 {
-            margin: 0 0 10px;
+            font-size: 2.2rem;
+            margin: 0;
+            color: white;
+            font-weight: normal;
         }
 
         .price {
             font-weight: bold;
             color: #27ae60;
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        .btn-wrapper {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         #item-btn {
-            margin-left: auto;
-            padding: 0.5rem 1rem;
+            padding: 10px 20px;
             border-radius: 9999px;
-            font-weight: 500;
             display: flex;
             align-items: center;
             gap: 0.5rem;
             cursor: pointer;
-            transition: all 0.2s;
             border: none;
-
-        }
-
-        .item-details {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            font-size: 1rem;
         }
 
         #item-btn {
@@ -93,13 +120,14 @@ try {
         }
 
         #item-btn:hover {
-            border: 1px solid #00d4ff;
-            color: #00d4ff;
-            background-color: #000000;
+        border: 1px solid #00d4ff;
+        color: #00d4ff;
+        background-color: #000000;
         }
 
-        .btn-wrapper {
-            margin-left: auto;
+        .header {
+        background-color: #1a1a1a;
+        color: white;
         }
     </style>
 </head>
@@ -140,23 +168,24 @@ try {
                             <img src="<?= htmlspecialchars("Images/thumbnails/" . $item['thumbnail']) ?>" alt="Item afbeelding">
                         <?php else: ?>
                             <!-- Als er geen thumbnail is, toon een placeholder -->
-                            <img src="https://via.placeholder.com/120?text=Geen+Afbeelding" alt="Geen afbeelding">
+                            <img src="https://via.placeholder.com/150?text=Geen+Afbeelding" alt="Geen afbeelding">
                         <?php endif; ?>
                     </div>
                     <div class="item-details">
-                        <h2><?= htmlspecialchars($item['name']) ?></h2><br>
-                        <p class="price">€<?= number_format($item['price'], 2, ',', '.') ?></p><br>
-                        <p><?= nl2br(htmlspecialchars($item['description'])) ?></p><br>
-                        <div class="btn-wrapper">
-                            <button id="item-btn">
-                                Koop nu
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                        </div>
+                        <h2><?= htmlspecialchars($item['name']) ?></h2>
+                        <p class="price">€<?= number_format($item['price'], 2, ',', '.') ?></p>
+                        <p><?= nl2br(htmlspecialchars($item['description'])) ?></p>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button id="item-btn">
+                            Koop nu
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
                     </div>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+</body>
 
 </html>
