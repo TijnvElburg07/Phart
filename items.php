@@ -22,6 +22,8 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Itemoverzicht</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -66,6 +68,26 @@ try {
     </style>
 </head>
 <body>
+<header class="header">
+        <div style="display: flex; align-items: center;">
+            <div class="logo">
+                <i class='fab fa-medrt' id="icon"></i>
+            </div>
+            <span>Phart</span>
+        </div>
+        <nav class="nav">
+            <a href="index.php" class="nav-item">Home</a>
+            <a href="search.php" class="nav-item">Producten</a>
+            <a href="prescription.php" class="nav-item ">Prescriptions</a>
+        </nav>
+        </div>
+        <div class="header-right">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-cog"></i>
+            <i class="fas fa-search"></i>
+            <img src="/placeholder.svg?height=35&width=35" alt="Profile" class="profile">
+        </div>
+    </header>
 
 <div class="container">
     <h1>Beschikbare Items</h1>
