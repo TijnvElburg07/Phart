@@ -21,6 +21,8 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
 
 <body>
   <!-- Header -->
+  <body>
+  <!-- Header -->
   <header class="header">
     <div style="display: flex; ">
       <div class="logo">
@@ -34,17 +36,22 @@ $name = (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true && isset
       <a href="prescription.php" class="nav-item">Prescriptions</a>
     </nav>
     </div>
-    <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) { ?>
-      <button class="btn btn-primary" id="register-btn">
-        Sign Up
-        <i class='fas fa-id-badge'></i>
-      </button>
-    <?php } else { ?>
-      <button class="btn btn-primary" id="logout-btn" onclick="headToLogout()">
-        Log out
-        <i class='fas fa-id-badge'></i>
-      </button>
-    <?php } ?>
+    <div class="header-right">
+      <i class="fas fa-bell"></i>
+      <i class="fas fa-cog"></i>
+      <i class="fas fa-search"></i>
+      <?php if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] === false) { ?>
+        <button class="btn btn-primary" id="register-btn">
+          Sign Up
+          <i class='fas fa-id-badge'></i>
+        </button>
+      <?php } else { ?>
+        <button class="btn btn-primary" id="logout-btn" onclick="headToLogout()">
+          Log out
+          <i class='fas fa-id-badge'></i>
+        </button>
+      <?php } ?>
+    </div>
     </div>
   </header>
 

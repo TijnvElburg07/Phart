@@ -19,7 +19,7 @@
         </div>
         <nav class="nav">
             <a href="index.php" class="nav-item">Home</a>
-            <a href="search.php" class="nav-item ">Advanced Search</a>
+            <a href="search.php" class="nav-item ">Producten</a>
             <a href="prescription.php" class="nav-item active">Prescriptions</a>
         </nav>
         </div>

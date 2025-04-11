@@ -124,11 +124,6 @@ try {
         color: #00d4ff;
         background-color: #000000;
         }
-
-        .header {
-        background-color: #1a1a1a;
-        color: white;
-        }
     </style>
 </head>
 
